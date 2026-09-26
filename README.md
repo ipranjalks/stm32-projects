@@ -7,6 +7,7 @@ Projects built on the STM32 Nucleo-F446RE board (https://www.st.com/en/evaluatio
 | 01 | [Blinky](01-blinky/) | GPIO output, HAL, flashing, debugging |
 | 02 | [UART Hello](02-uart-hello/) | USART2, `printf` retargeting, blocking receive |
 | 03 | [UART Command Shell](03-uart-command-shell/) | String parsing, command dispatch, GPIO output |
+| 04 | [Button Interrupt](04-button-interrupt/) | EXTI, NVIC, weak callbacks, volatile, debouncing |
 
 ## Building any project
 
