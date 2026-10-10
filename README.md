@@ -10,6 +10,7 @@ Projects built on the STM32 Nucleo-F446RE board (https://www.st.com/en/evaluatio
 | 04 | [Button Interrupt](04-button-interrupt/) | EXTI, NVIC, weak callbacks, volatile, debouncing |
 | 05 | [Timer Blink](05-timer-blink/) | TIM2, prescaler and ARR, periodic interrupts, non-blocking timing |
 | 06 | [PWM Breathing LED](06-pwm-breathing-led/) | PWM generation, alternate function pins, duty cycle |
+| 07 | [ADC Temperature](07-adc-temperature/) | ADC conversion, sampling time, internal channels, datasheet arithmetic |
 
 ## Building any project
 
