@@ -95,7 +95,7 @@ int main(void)
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
   printf("\r\nBoard started\r\n");
-  HAL_ADC_Start(&hadc1);  // 1. Start the ADC
+//  HAL_ADC_Start(&hadc1);  // 1. Start the ADC
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -105,11 +105,19 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+	// Refer to page 376 in the Reference Manual and
+	// page 145 in the Datasheet
+	HAL_ADC_Start(&hadc1);  // 1. Start the ADC
 	if (HAL_ADC_PollForConversion(&hadc1, 100) == HAL_OK)  // 2. Wait up to 100 ms for completion
 	{
-		uint32_t adc_value = HAL_ADC_GetValue(&hadc1);  // 3. Read the converted value
-		printf("\r\n%d\r\n", (int)adc_value);
+		uint32_t adc_value = HAL_ADC_GetValue(&hadc1);  // 3. Read the raw converted value
+		float v_sense = (adc_value * 3.3) / 4096;  // 4. Converted to Voltage V_SENSE
+		float temp = (v_sense - 0.76) / (2.5 / 1000) + 25;  // 5. Temperature reading
+		printf("raw=%4d  v=%.3f  T=%.1f C\r\n", (int)adc_value, v_sense, temp);
 	}
+	HAL_ADC_Stop(&hadc1);
+	HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
